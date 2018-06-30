@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5D6FD30D47E39084193B5F5F /* Pods_ScreenOnUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39F7B5D983C8FE276881110 /* Pods_ScreenOnUITests.framework */; };
 		725ADD5120E7A1750068E8C4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725ADD5020E7A1750068E8C4 /* NetworkMonitor.swift */; };
+		72EFF3FE20E7AE3600B0DD26 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EFF3FC20E7AE3600B0DD26 /* LoginViewController.swift */; };
+		72EFF3FF20E7AE3600B0DD26 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EFF3FD20E7AE3600B0DD26 /* LoginViewController.xib */; };
 		72F1DBA220E7084700D74046 /* UIApplication+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1DBA120E7084700D74046 /* UIApplication+ext.swift */; };
 		72F1DBA420E7089100D74046 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1DBA320E7089100D74046 /* UIViewController+ext.swift */; };
 		72F8021020E7048E00FF21A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F8020F20E7048E00FF21A4 /* AppDelegate.swift */; };
@@ -49,6 +51,8 @@
 		557CC963C073F93F756AB15E /* Pods_ScreenOnTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScreenOnTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		688E87BA786619682307485B /* Pods-ScreenOnUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnUITests/Pods-ScreenOnUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		725ADD5020E7A1750068E8C4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		72EFF3FC20E7AE3600B0DD26 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		72EFF3FD20E7AE3600B0DD26 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		72F1DBA120E7084700D74046 /* UIApplication+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ext.swift"; sourceTree = "<group>"; };
 		72F1DBA320E7089100D74046 /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
 		72F8020C20E7048E00FF21A4 /* ScreenOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +127,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		72EFF40020E7AEDB00B0DD26 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				72F8021920E7048F00FF21A4 /* Assets.xcassets */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
 		72F1DB9B20E707D500D74046 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				72F1DBA020E7082F00D74046 /* Extension */,
+				72EFF3FC20E7AE3600B0DD26 /* LoginViewController.swift */,
+				72EFF3FD20E7AE3600B0DD26 /* LoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,13 +213,13 @@
 		72F8020E20E7048E00FF21A4 /* ScreenOn */ = {
 			isa = PBXGroup;
 			children = (
+				72EFF40020E7AEDB00B0DD26 /* Asset */,
 				72F8024020E704BE00FF21A4 /* Config */,
 				72F1DB9B20E707D500D74046 /* Model */,
 				72F1DB9C20E707EA00D74046 /* View */,
 				72F1DB9F20E7082200D74046 /* Controller */,
 				72F8020F20E7048E00FF21A4 /* AppDelegate.swift */,
 				72F8021120E7048E00FF21A4 /* ViewController.swift */,
-				72F8021920E7048F00FF21A4 /* Assets.xcassets */,
 			);
 			path = ScreenOn;
 			sourceTree = "<group>";
@@ -348,6 +362,7 @@
 			files = (
 				72F8024320E704D900FF21A4 /* Info.plist in Resources */,
 				72F8024420E704D900FF21A4 /* google.plist in Resources */,
+				72EFF3FF20E7AE3600B0DD26 /* LoginViewController.xib in Resources */,
 				72F8021D20E7048F00FF21A4 /* LaunchScreen.storyboard in Resources */,
 				72F8021A20E7048F00FF21A4 /* Assets.xcassets in Resources */,
 				72F8021520E7048E00FF21A4 /* Main.storyboard in Resources */,
@@ -488,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72EFF3FE20E7AE3600B0DD26 /* LoginViewController.swift in Sources */,
 				72F1DBA220E7084700D74046 /* UIApplication+ext.swift in Sources */,
 				725ADD5120E7A1750068E8C4 /* NetworkMonitor.swift in Sources */,
 				72F8021220E7048E00FF21A4 /* ViewController.swift in Sources */,
