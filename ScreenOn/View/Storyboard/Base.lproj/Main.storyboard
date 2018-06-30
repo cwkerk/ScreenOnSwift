@@ -1,57 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ScreenOn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ScreenOn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNj-8w-rR7">
+                                <rect key="frame" x="57.666666666666657" y="181" width="260" height="350"/>
+                                <view key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="T94-Sk-UPv">
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="350"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6eW-9v-lcf">
+                                            <rect key="frame" x="30" y="30" width="200" height="200"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="6eW-9v-lcf" secondAttribute="height" id="Pie-sP-yQP"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oP-nS-Lyu" customClass="GIDSignInButton">
+                                            <rect key="frame" x="30" y="250" width="200" height="45"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="rt2-Fh-rBv"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6eW-9v-lcf" firstAttribute="top" secondItem="T94-Sk-UPv" secondAttribute="top" constant="30" id="2U4-IA-lHs"/>
+                                        <constraint firstItem="2oP-nS-Lyu" firstAttribute="top" secondItem="6eW-9v-lcf" secondAttribute="bottom" constant="20" id="DIR-WL-8DD"/>
+                                        <constraint firstAttribute="trailing" secondItem="6eW-9v-lcf" secondAttribute="trailing" constant="30" id="O4f-wP-gRH"/>
+                                        <constraint firstAttribute="trailing" secondItem="2oP-nS-Lyu" secondAttribute="trailing" constant="30" id="XVR-et-qS1"/>
+                                        <constraint firstItem="6eW-9v-lcf" firstAttribute="leading" secondItem="T94-Sk-UPv" secondAttribute="leading" constant="30" id="gNI-S7-rLQ"/>
+                                        <constraint firstItem="2oP-nS-Lyu" firstAttribute="leading" secondItem="T94-Sk-UPv" secondAttribute="leading" constant="30" id="s1u-zD-05C"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="ASZ-Nk-0nn"/>
+                                    <constraint firstAttribute="width" constant="260" id="bGv-Jr-kiS"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.47999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yNj-8w-rR7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="Yr7-Zv-Erp"/>
+                            <constraint firstItem="yNj-8w-rR7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ode-ha-lnd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="loginBlurView" destination="yNj-8w-rR7" id="Qcq-KX-r68"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-658" y="-89"/>
+            <point key="canvasLocation" x="-658.39999999999998" y="-90.14778325123153"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="oP0-al-xXJ">
             <objects>
                 <viewController storyboardIdentifier="NotSupportViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vRQ-wB-IKI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bIo-in-24G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xts-as-2PM">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D0q-BF-DTj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="iD4-HB-poJ">
+                                            <rect key="frame" x="87.666666666666686" y="147" width="200" height="200"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="Xe8-iA-xb0"/>
+                                                <constraint firstAttribute="height" constant="200" id="oES-mD-xYC"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAt-TL-kAi">
-                                            <rect key="frame" x="20" y="50" width="335" height="547"/>
-                                            <string key="text">Please to be informed that this app is supported by this device due to hardware specification issues or unsupported iOS version.</string>
+                                            <rect key="frame" x="50" y="377" width="275" height="179.33333333333337"/>
+                                            <string key="text">Please to be informed that this app is supported by this device might be due to hardware specification issues or unsupported iOS version.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="IAt-TL-kAi" firstAttribute="top" secondItem="D0q-BF-DTj" secondAttribute="top" constant="50" id="EjW-Ft-ZIJ"/>
-                                        <constraint firstAttribute="bottom" secondItem="IAt-TL-kAi" secondAttribute="bottom" constant="50" id="VIK-s9-Lqp"/>
-                                        <constraint firstAttribute="trailing" secondItem="IAt-TL-kAi" secondAttribute="trailing" constant="20" id="xGh-xN-lPT"/>
-                                        <constraint firstItem="IAt-TL-kAi" firstAttribute="leading" secondItem="D0q-BF-DTj" secondAttribute="leading" constant="20" id="yDf-0d-m5E"/>
+                                        <constraint firstItem="IAt-TL-kAi" firstAttribute="leading" secondItem="D0q-BF-DTj" secondAttribute="leading" constant="50" id="G30-FL-Zsy"/>
+                                        <constraint firstItem="iD4-HB-poJ" firstAttribute="centerX" secondItem="D0q-BF-DTj" secondAttribute="centerX" id="MCx-vV-re5"/>
+                                        <constraint firstItem="IAt-TL-kAi" firstAttribute="top" secondItem="iD4-HB-poJ" secondAttribute="bottom" constant="30" id="Wfj-Ei-g39"/>
+                                        <constraint firstItem="iD4-HB-poJ" firstAttribute="centerY" secondItem="D0q-BF-DTj" secondAttribute="centerY" constant="-120" id="jSq-XZ-VW7"/>
+                                        <constraint firstAttribute="trailing" secondItem="IAt-TL-kAi" secondAttribute="trailing" constant="50" id="xLQ-Jk-MZB"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -75,17 +128,17 @@
         <scene sceneID="S7b-Xj-ifg">
             <objects>
                 <viewController storyboardIdentifier="NoInternetViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="evW-5R-SZf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fE0-Lf-0xr">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="fE0-Lf-0xr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XD0-XQ-HXV">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XD0-XQ-HXV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uJG-sU-JQc">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="uJG-sU-JQc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet Connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrW-SI-HT5">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No Internet Connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrW-SI-HT5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,4 +171,7 @@
             <point key="canvasLocation" x="-657" y="-1220"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppLogo" width="200" height="200"/>
+    </resources>
 </document>

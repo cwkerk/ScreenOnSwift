@@ -7,29 +7,38 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var loginBlurView: UIVisualEffectView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.loginBlurView.layer.cornerRadius = 20.0
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+extension LoginViewController: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        // TODO: get user profile here
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // TODO: remove user profile here
     }
-    */
+    
+}
 
+extension LoginViewController: GIDSignInUIDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+    }
+    
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+    }
+    
 }
