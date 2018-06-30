@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ScreenOn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,6 +23,99 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-658" y="-89"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oP0-al-xXJ">
+            <objects>
+                <viewController storyboardIdentifier="NotSupportViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vRQ-wB-IKI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bIo-in-24G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xts-as-2PM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D0q-BF-DTj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAt-TL-kAi">
+                                            <rect key="frame" x="20" y="50" width="335" height="547"/>
+                                            <string key="text">Please to be informed that this app is supported by this device due to hardware specification issues or unsupported iOS version.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="IAt-TL-kAi" firstAttribute="top" secondItem="D0q-BF-DTj" secondAttribute="top" constant="50" id="EjW-Ft-ZIJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="IAt-TL-kAi" secondAttribute="bottom" constant="50" id="VIK-s9-Lqp"/>
+                                        <constraint firstAttribute="trailing" secondItem="IAt-TL-kAi" secondAttribute="trailing" constant="20" id="xGh-xN-lPT"/>
+                                        <constraint firstItem="IAt-TL-kAi" firstAttribute="leading" secondItem="D0q-BF-DTj" secondAttribute="leading" constant="20" id="yDf-0d-m5E"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xts-as-2PM" firstAttribute="leading" secondItem="m9w-xa-5l9" secondAttribute="leading" id="3VY-mJ-iR0"/>
+                            <constraint firstItem="m9w-xa-5l9" firstAttribute="bottom" secondItem="Xts-as-2PM" secondAttribute="bottom" id="J9H-ts-aSf"/>
+                            <constraint firstItem="Xts-as-2PM" firstAttribute="trailing" secondItem="m9w-xa-5l9" secondAttribute="trailing" id="T96-61-wsb"/>
+                            <constraint firstItem="Xts-as-2PM" firstAttribute="top" secondItem="m9w-xa-5l9" secondAttribute="top" id="df0-a1-vhK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m9w-xa-5l9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n61-xh-6AS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-658.39999999999998" y="-797.45127436281871"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="S7b-Xj-ifg">
+            <objects>
+                <viewController storyboardIdentifier="NoInternetViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="evW-5R-SZf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fE0-Lf-0xr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XD0-XQ-HXV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uJG-sU-JQc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet Connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrW-SI-HT5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="JrW-SI-HT5" firstAttribute="leading" secondItem="uJG-sU-JQc" secondAttribute="leading" id="4pH-MI-Fxq"/>
+                                        <constraint firstAttribute="bottom" secondItem="JrW-SI-HT5" secondAttribute="bottom" id="VJb-ZN-Wfm"/>
+                                        <constraint firstAttribute="trailing" secondItem="JrW-SI-HT5" secondAttribute="trailing" id="XTL-6F-c8i"/>
+                                        <constraint firstItem="JrW-SI-HT5" firstAttribute="top" secondItem="uJG-sU-JQc" secondAttribute="top" id="qKq-xN-6V2"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XD0-XQ-HXV" firstAttribute="top" secondItem="Wuk-ik-aJO" secondAttribute="top" id="G6x-f2-o52"/>
+                            <constraint firstItem="XD0-XQ-HXV" firstAttribute="leading" secondItem="Wuk-ik-aJO" secondAttribute="leading" id="QBt-QA-UnN"/>
+                            <constraint firstItem="XD0-XQ-HXV" firstAttribute="trailing" secondItem="Wuk-ik-aJO" secondAttribute="trailing" id="g36-86-Vnv"/>
+                            <constraint firstItem="XD0-XQ-HXV" firstAttribute="bottom" secondItem="Wuk-ik-aJO" secondAttribute="bottom" id="kWl-0x-ukd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wuk-ik-aJO"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="50"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ahQ-ee-icT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-657" y="-1220"/>
         </scene>
     </scenes>
 </document>
