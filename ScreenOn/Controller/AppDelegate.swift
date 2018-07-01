@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = "997117142453-g07648sd279ntfnbm03vbddnkj46dsoq.apps.googleusercontent.com"
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         PDKClient.configureSharedInstance(withAppId: "4972534596330596383")
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-1749500499268006~6194951492")
         return true
     }
 

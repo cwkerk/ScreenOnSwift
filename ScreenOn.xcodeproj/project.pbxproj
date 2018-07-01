@@ -11,6 +11,7 @@
 		7252EE0320E7C04600094982 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7252EE0220E7C04600094982 /* CoreDataManager.swift */; };
 		7252EE0820E7C0D800094982 /* NSPersistentStoreCoordinator+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7252EE0720E7C0D800094982 /* NSPersistentStoreCoordinator+ext.swift */; };
 		725ADD5120E7A1750068E8C4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725ADD5020E7A1750068E8C4 /* NetworkMonitor.swift */; };
+		72EF9BB120E8A1840053CB27 /* AdmobBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EF9BB020E8A1840053CB27 /* AdmobBannerViewController.swift */; };
 		72EFF40320E7B86800B0DD26 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EFF40220E7B86800B0DD26 /* LoginViewController.swift */; };
 		72F1DBA220E7084700D74046 /* UIApplication+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1DBA120E7084700D74046 /* UIApplication+ext.swift */; };
 		72F1DBA420E7089100D74046 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1DBA320E7089100D74046 /* UIViewController+ext.swift */; };
@@ -53,6 +54,7 @@
 		7252EE0220E7C04600094982 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7252EE0720E7C0D800094982 /* NSPersistentStoreCoordinator+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPersistentStoreCoordinator+ext.swift"; sourceTree = "<group>"; };
 		725ADD5020E7A1750068E8C4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		72EF9BB020E8A1840053CB27 /* AdmobBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobBannerViewController.swift; sourceTree = "<group>"; };
 		72EFF40220E7B86800B0DD26 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		72F1DBA120E7084700D74046 /* UIApplication+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ext.swift"; sourceTree = "<group>"; };
 		72F1DBA320E7089100D74046 /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				72F1DBA020E7082F00D74046 /* Extension */,
 				72F8020F20E7048E00FF21A4 /* AppDelegate.swift */,
 				72EFF40220E7B86800B0DD26 /* LoginViewController.swift */,
+				72EF9BB020E8A1840053CB27 /* AdmobBannerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 			files = (
 				72EFF40320E7B86800B0DD26 /* LoginViewController.swift in Sources */,
 				72F1DBA220E7084700D74046 /* UIApplication+ext.swift in Sources */,
+				72EF9BB120E8A1840053CB27 /* AdmobBannerViewController.swift in Sources */,
 				725ADD5120E7A1750068E8C4 /* NetworkMonitor.swift in Sources */,
 				72F8021220E7048E00FF21A4 /* ViewController.swift in Sources */,
 				72F8021820E7048E00FF21A4 /* ScreenOn.xcdatamodeld in Sources */,
