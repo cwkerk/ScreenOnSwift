@@ -42,6 +42,19 @@ class LoginViewController: UIViewController {
             GIDSignIn.sharedInstance().signInSilently()
         } else if FBSDKAccessToken.currentAccessTokenIsActive() {
             // TODO: login silently
+        } else {
+            PDKClient.sharedInstance().silentlyAuthenticatefromViewController(self, withSuccess: { (response) in
+                let user = response?.user()
+                print("The pinterest user is \(user?.biography ?? "from unknown background")")
+            }) { (error) in
+                if let err = error {
+                    print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
+                }
+            }
+        }
+        if let bannerViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GADBannerViewController") as? AdmobBannerViewController {
+            bannerViewController.adUnitId = "ca-app-pub-1749500499268006/6482697858"
+            self.addChild(viewController: bannerViewController, inRect: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 50))
         }
     }
     
