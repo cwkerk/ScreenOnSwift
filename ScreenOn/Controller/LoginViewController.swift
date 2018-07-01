@@ -23,8 +23,8 @@ class LoginViewController: UIViewController {
         self.appLogoView.layer.cornerRadius = 10.0
         self.loginBlurView.layer.cornerRadius = 20.0
         GIDSignIn.sharedInstance().uiDelegate = self
+        self.fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
         self.fbLoginButton.layer.shadowColor = UIColor.darkGray.cgColor
-        self.fbLoginButton.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.fbLoginButton.constraints.forEach { (c) in
             if c.firstAttribute == .height && c.constant == 28 {
                 self.fbLoginButton.removeConstraint(c)
