@@ -8,17 +8,55 @@
 
 import UIKit
 import GoogleSignIn
+import FBSDKLoginKit
+import PinterestSDK
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var appLogoView: UIImageView!
     @IBOutlet weak var loginBlurView: UIVisualEffectView!
+    @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var pinterestLoginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.appLogoView.layer.cornerRadius = 10.0
         self.loginBlurView.layer.cornerRadius = 20.0
         GIDSignIn.sharedInstance().uiDelegate = self
+        self.fbLoginButton.layer.shadowColor = UIColor.darkGray.cgColor
+        self.fbLoginButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.fbLoginButton.constraints.forEach { (c) in
+            if c.firstAttribute == .height && c.constant == 28 {
+                self.fbLoginButton.removeConstraint(c)
+            }
+        }
+        self.fbLoginButton.delegate = self
+        self.fbLoginButton.readPermissions = ["email", "public_profile"]
+        self.pinterestLoginButton.contentHorizontalAlignment = .left
+        self.pinterestLoginButton.layer.cornerRadius = 3.0
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            GIDSignIn.sharedInstance().signInSilently()
+        } else if FBSDKAccessToken.currentAccessTokenIsActive() {
+            // TODO: login silently
+        }
+    }
+    
+    @IBAction func pinterestLogin(_ sender: UIButton) {
+        let permissions = [PDKClientReadPublicPermissions, PDKClientWritePublicPermissions, PDKClientReadRelationshipsPermissions, PDKClientWriteRelationshipsPermissions]
+        PDKClient.sharedInstance().authenticate(withPermissions: permissions, from: self, withSuccess: { (response) in
+            let user = response?.user()
+            print("The pinterest user is \(user?.biography ?? "from unknown background")")
+        }) { (error) in
+            if let err = error {
+                print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
+            }
+        }
+    }
+    
 }
 
 extension LoginViewController: GIDSignInDelegate {
@@ -39,6 +77,17 @@ extension LoginViewController: GIDSignInUIDelegate {
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        
+    }
+    
+}
+
+extension LoginViewController: FBSDKLoginButtonDelegate {
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
     }
     
 }

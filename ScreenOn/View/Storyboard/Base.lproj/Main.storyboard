@@ -20,9 +20,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNj-8w-rR7">
-                                <rect key="frame" x="57.666666666666657" y="181" width="260" height="350"/>
+                                <rect key="frame" x="57.666666666666657" y="141" width="260" height="430"/>
                                 <view key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="T94-Sk-UPv">
-                                    <rect key="frame" x="0.0" y="0.0" width="260" height="350"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="430"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6eW-9v-lcf">
@@ -32,24 +32,51 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oP-nS-Lyu" customClass="GIDSignInButton">
-                                            <rect key="frame" x="30" y="250" width="200" height="45"/>
+                                            <rect key="frame" x="25" y="250" width="210" height="40"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="45" id="rt2-Fh-rBv"/>
+                                                <constraint firstAttribute="height" constant="40" id="rt2-Fh-rBv"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F19-Hp-Ugq" customClass="FBSDKLoginButton">
+                                            <rect key="frame" x="28" y="305" width="204" height="40"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="2VG-Ea-N92"/>
+                                            </constraints>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-0x-QN1">
+                                            <rect key="frame" x="30" y="360" width="202" height="40"/>
+                                            <color key="backgroundColor" red="1" green="0.14901960784313725" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="loZ-SI-qta"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <inset key="contentEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                            <state key="normal" title="Continue with Pinterest" image="Pinterest"/>
+                                            <connections>
+                                                <action selector="pinterestLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P33-b1-CTv"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="F19-Hp-Ugq" firstAttribute="top" secondItem="2oP-nS-Lyu" secondAttribute="bottom" constant="15" id="0rE-et-IzB"/>
+                                        <constraint firstItem="F19-Hp-Ugq" firstAttribute="leading" secondItem="2oP-nS-Lyu" secondAttribute="leading" constant="3" id="21T-Jt-ITz"/>
                                         <constraint firstItem="6eW-9v-lcf" firstAttribute="top" secondItem="T94-Sk-UPv" secondAttribute="top" constant="30" id="2U4-IA-lHs"/>
+                                        <constraint firstItem="F19-Hp-Ugq" firstAttribute="trailing" secondItem="2oP-nS-Lyu" secondAttribute="trailing" constant="-3" id="BU7-J3-TKy"/>
                                         <constraint firstItem="2oP-nS-Lyu" firstAttribute="top" secondItem="6eW-9v-lcf" secondAttribute="bottom" constant="20" id="DIR-WL-8DD"/>
                                         <constraint firstAttribute="trailing" secondItem="6eW-9v-lcf" secondAttribute="trailing" constant="30" id="O4f-wP-gRH"/>
-                                        <constraint firstAttribute="trailing" secondItem="2oP-nS-Lyu" secondAttribute="trailing" constant="30" id="XVR-et-qS1"/>
+                                        <constraint firstItem="1Yo-0x-QN1" firstAttribute="leading" secondItem="2oP-nS-Lyu" secondAttribute="leading" constant="5" id="SuB-2f-pI9"/>
+                                        <constraint firstAttribute="trailing" secondItem="2oP-nS-Lyu" secondAttribute="trailing" constant="25" id="XVR-et-qS1"/>
+                                        <constraint firstItem="1Yo-0x-QN1" firstAttribute="trailing" secondItem="2oP-nS-Lyu" secondAttribute="trailing" constant="-3" id="aKb-ih-nvR"/>
+                                        <constraint firstAttribute="bottom" secondItem="1Yo-0x-QN1" secondAttribute="bottom" constant="30" id="aLd-oJ-KlC"/>
                                         <constraint firstItem="6eW-9v-lcf" firstAttribute="leading" secondItem="T94-Sk-UPv" secondAttribute="leading" constant="30" id="gNI-S7-rLQ"/>
-                                        <constraint firstItem="2oP-nS-Lyu" firstAttribute="leading" secondItem="T94-Sk-UPv" secondAttribute="leading" constant="30" id="s1u-zD-05C"/>
+                                        <constraint firstItem="2oP-nS-Lyu" firstAttribute="leading" secondItem="T94-Sk-UPv" secondAttribute="leading" constant="25" id="s1u-zD-05C"/>
+                                        <constraint firstItem="1Yo-0x-QN1" firstAttribute="top" secondItem="F19-Hp-Ugq" secondAttribute="bottom" constant="15" id="tPF-UP-aUW"/>
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="ASZ-Nk-0nn"/>
                                     <constraint firstAttribute="width" constant="260" id="bGv-Jr-kiS"/>
                                 </constraints>
                                 <blurEffect style="light"/>
@@ -63,7 +90,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="appLogoView" destination="6eW-9v-lcf" id="5y9-hl-NAm"/>
+                        <outlet property="fbLoginButton" destination="F19-Hp-Ugq" id="oJp-Hg-QuX"/>
                         <outlet property="loginBlurView" destination="yNj-8w-rR7" id="Qcq-KX-r68"/>
+                        <outlet property="pinterestLoginButton" destination="1Yo-0x-QN1" id="mgD-Ea-LmF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -173,5 +203,6 @@
     </scenes>
     <resources>
         <image name="AppLogo" width="200" height="200"/>
+        <image name="Pinterest" width="32" height="32"/>
     </resources>
 </document>
