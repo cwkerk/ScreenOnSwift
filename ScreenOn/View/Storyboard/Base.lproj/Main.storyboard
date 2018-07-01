@@ -200,6 +200,22 @@
             </objects>
             <point key="canvasLocation" x="-657" y="-1220"/>
         </scene>
+        <!--Admob Banner View Controller-->
+        <scene sceneID="zGK-fH-hVl">
+            <objects>
+                <viewController storyboardIdentifier="GADBannerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hn7-bX-G1a" customClass="AdmobBannerViewController" customModule="ScreenOn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jxk-ZH-KUe" customClass="GADBannerView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ixi-a8-1ek"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="50"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hpb-Ip-HO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="73" y="-1221"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AppLogo" width="200" height="200"/>
