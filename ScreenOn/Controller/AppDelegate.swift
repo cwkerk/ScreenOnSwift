@@ -11,6 +11,7 @@ import CoreData
 import GoogleSignIn
 import GoogleMobileAds
 import FBSDKLoginKit
+import PinterestSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GIDSignIn.sharedInstance().clientID = "997117142453-g07648sd279ntfnbm03vbddnkj46dsoq.apps.googleusercontent.com"
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        PDKClient.configureSharedInstance(withAppId: "4972534596330596383")
         return true
     }
 
@@ -43,7 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let google = GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: [UIApplicationOpenURLOptionsKey.annotation])
         let facebook = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: [UIApplicationOpenURLOptionsKey.annotation])
-        return google || facebook
+        let pinterest = PDKClient.sharedInstance().handleCallbackURL(url)
+        return google || facebook || pinterest
     }
 
 }
