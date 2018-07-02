@@ -56,7 +56,7 @@ extension PeerSessionManager: MCNearbyServiceAdvertiserDelegate {
 extension PeerSessionManager: MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        // TODO: to sedn invitation here
+        // TODO: to send invitation here
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
@@ -71,11 +71,11 @@ extension PeerSessionManager: MCNearbyServiceBrowserDelegate {
 extension PeerSessionManager: MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        
+        // TODO: peers' state handling here
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        
+        // TODO: data transfer starts here
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
@@ -83,14 +83,15 @@ extension PeerSessionManager: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        
+        // TODO: file transfer starts here
     }
     
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        
+        // TODO: file transfer ends here
     }
     
     func session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
+        // TODO: SSL pinning goes here
     }
     
 }
