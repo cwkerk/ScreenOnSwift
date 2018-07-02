@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 extension UIViewController {
     
@@ -25,6 +26,12 @@ extension UIViewController {
         target.willMove(toParentViewController: nil)
         target.view.removeFromSuperview()
         target.removeFromParentViewController()
+    }
+    
+    public func showGADInterstitial(adUnitID: String) -> GADInterstitial {
+        let interstitial = GADInterstitial(adUnitID: adUnitID)
+        interstitial.load(GADRequest())
+        return interstitial
     }
     
 }
