@@ -54,7 +54,6 @@ extension AdmobBannerViewController: GADBannerViewDelegate {
     
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
         print("Admob banner view failed to receive ad for unit ID \(self.adUnitId) due to: \(error.localizedDescription)")
-        
     }
     
 }

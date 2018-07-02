@@ -13,6 +13,8 @@ import PinterestSDK
 
 class LoginViewController: UIViewController {
     
+    private let nextDestinationSegueID = "startApp"
+    
     @IBOutlet weak var appLogoView: UIImageView!
     @IBOutlet weak var loginBlurView: UIVisualEffectView!
     @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
@@ -40,8 +42,9 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
         if GIDSignIn.sharedInstance().hasAuthInKeychain() {
             GIDSignIn.sharedInstance().signInSilently()
+            self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
         } else if FBSDKAccessToken.currentAccessTokenIsActive() {
-            // TODO: login silently
+            self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
         } else {
             PDKClient.sharedInstance().silentlyAuthenticatefromViewController(self, withSuccess: { (response) in
                 let user = response?.user()
@@ -49,12 +52,10 @@ class LoginViewController: UIViewController {
             }) { (error) in
                 if let err = error {
                     print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
+                } else {
+                    self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
                 }
             }
-        }
-        if let bannerViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GADBannerViewController") as? AdmobBannerViewController {
-            bannerViewController.adUnitId = "ca-app-pub-1749500499268006/6482697858"
-            self.addChild(viewController: bannerViewController, inRect: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 50))
         }
     }
     

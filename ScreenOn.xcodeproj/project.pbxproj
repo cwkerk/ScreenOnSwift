@@ -24,6 +24,8 @@
 		72F8022820E7048F00FF21A4 /* ScreenOnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F8022720E7048F00FF21A4 /* ScreenOnTests.swift */; };
 		72F8023320E7048F00FF21A4 /* ScreenOnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F8023220E7048F00FF21A4 /* ScreenOnUITests.swift */; };
 		72F8024420E704D900FF21A4 /* google.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72F8024220E704D800FF21A4 /* google.plist */; };
+		A42C0E8320EA67E1005300A5 /* BGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C0E8220EA67E1005300A5 /* BGViewController.swift */; };
+		A42C0E8520EA6A73005300A5 /* UIView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C0E8420EA6A73005300A5 /* UIView+ext.swift */; };
 		E1E3C4AF9CEE56E28B152826 /* Pods_ScreenOnTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557CC963C073F93F756AB15E /* Pods_ScreenOnTests.framework */; };
 		EF4A8A15EEADC77457BC8E3C /* Pods_ScreenOn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9AC4F798F3BAEB96B3B125 /* Pods_ScreenOn.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		72F8024220E704D800FF21A4 /* google.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = google.plist; sourceTree = "<group>"; };
 		811FF324D7BD4F72CB820B1A /* Pods-ScreenOnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnUITests/Pods-ScreenOnUITests.release.xcconfig"; sourceTree = "<group>"; };
 		92F0567977342A510319FB10 /* Pods-ScreenOnTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnTests/Pods-ScreenOnTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A42C0E8220EA67E1005300A5 /* BGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGViewController.swift; sourceTree = "<group>"; };
+		A42C0E8420EA6A73005300A5 /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+ext.swift"; path = "ScreenOn/Controller/ViewController/UIView+ext.swift"; sourceTree = SOURCE_ROOT; };
 		C51D284EF12DD7E6245B0036 /* Pods-ScreenOnTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnTests/Pods-ScreenOnTests.release.xcconfig"; sourceTree = "<group>"; };
 		F39F7B5D983C8FE276881110 /* Pods_ScreenOnUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScreenOnUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -202,6 +206,7 @@
 		72F1DB9E20E7080D00D74046 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A42C0E8420EA6A73005300A5 /* UIView+ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -210,9 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				72F1DBA020E7082F00D74046 /* Extension */,
+				A432131020E91663004C8BFD /* ViewController */,
 				72F8020F20E7048E00FF21A4 /* AppDelegate.swift */,
-				72EFF40220E7B86800B0DD26 /* LoginViewController.swift */,
-				72EF9BB020E8A1840053CB27 /* AdmobBannerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -286,6 +290,16 @@
 				72F8024120E704D800FF21A4 /* Info.plist */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		A432131020E91663004C8BFD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				72EFF40220E7B86800B0DD26 /* LoginViewController.swift */,
+				A42C0E8220EA67E1005300A5 /* BGViewController.swift */,
+				72EF9BB020E8A1840053CB27 /* AdmobBannerViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +466,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/PersonalizedAdConsent/PersonalizedAdConsent.framework",
 				"${BUILT_PRODUCTS_DIR}/PinterestSDK/PinterestSDK.framework",
@@ -466,6 +481,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PersonalizedAdConsent.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinterestSDK.framework",
@@ -546,7 +562,9 @@
 				72F8021820E7048E00FF21A4 /* ScreenOn.xcdatamodeld in Sources */,
 				7252EE0820E7C0D800094982 /* NSPersistentStoreCoordinator+ext.swift in Sources */,
 				72F1DBA420E7089100D74046 /* UIViewController+ext.swift in Sources */,
+				A42C0E8520EA6A73005300A5 /* UIView+ext.swift in Sources */,
 				7252EE0320E7C04600094982 /* CoreDataManager.swift in Sources */,
+				A42C0E8320EA67E1005300A5 /* BGViewController.swift in Sources */,
 				72F8021020E7048E00FF21A4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,7 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -707,7 +725,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -722,7 +740,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YH5SLCL397;
+				DEVELOPMENT_TEAM = FT8DYS46LL;
 				INFOPLIST_FILE = "$(SRCROOT)/ScreenOn/Config/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -743,7 +761,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YH5SLCL397;
+				DEVELOPMENT_TEAM = FT8DYS46LL;
 				INFOPLIST_FILE = "$(SRCROOT)/ScreenOn/Config/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -765,7 +783,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YH5SLCL397;
+				DEVELOPMENT_TEAM = FT8DYS46LL;
 				INFOPLIST_FILE = ScreenOnTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -787,7 +805,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YH5SLCL397;
+				DEVELOPMENT_TEAM = FT8DYS46LL;
 				INFOPLIST_FILE = ScreenOnTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -808,7 +826,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YH5SLCL397;
+				DEVELOPMENT_TEAM = FT8DYS46LL;
 				INFOPLIST_FILE = ScreenOnUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -829,7 +847,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YH5SLCL397;
+				DEVELOPMENT_TEAM = FT8DYS46LL;
 				INFOPLIST_FILE = ScreenOnUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
