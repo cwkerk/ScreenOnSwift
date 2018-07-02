@@ -24,8 +24,9 @@
 		72F8022820E7048F00FF21A4 /* ScreenOnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F8022720E7048F00FF21A4 /* ScreenOnTests.swift */; };
 		72F8023320E7048F00FF21A4 /* ScreenOnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F8023220E7048F00FF21A4 /* ScreenOnUITests.swift */; };
 		72F8024420E704D900FF21A4 /* google.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72F8024220E704D800FF21A4 /* google.plist */; };
-		A42C0E8320EA67E1005300A5 /* BGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C0E8220EA67E1005300A5 /* BGViewController.swift */; };
 		A42C0E8520EA6A73005300A5 /* UIView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C0E8420EA6A73005300A5 /* UIView+ext.swift */; };
+		A42C0E8720EA6E5C005300A5 /* PeersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C0E8620EA6E5C005300A5 /* PeersViewController.swift */; };
+		A42C0E8920EA6ED0005300A5 /* PeerSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C0E8820EA6ED0005300A5 /* PeerSessionManager.swift */; };
 		E1E3C4AF9CEE56E28B152826 /* Pods_ScreenOnTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557CC963C073F93F756AB15E /* Pods_ScreenOnTests.framework */; };
 		EF4A8A15EEADC77457BC8E3C /* Pods_ScreenOn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9AC4F798F3BAEB96B3B125 /* Pods_ScreenOn.framework */; };
 /* End PBXBuildFile section */
@@ -77,8 +78,9 @@
 		72F8024220E704D800FF21A4 /* google.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = google.plist; sourceTree = "<group>"; };
 		811FF324D7BD4F72CB820B1A /* Pods-ScreenOnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnUITests/Pods-ScreenOnUITests.release.xcconfig"; sourceTree = "<group>"; };
 		92F0567977342A510319FB10 /* Pods-ScreenOnTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnTests/Pods-ScreenOnTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A42C0E8220EA67E1005300A5 /* BGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGViewController.swift; sourceTree = "<group>"; };
 		A42C0E8420EA6A73005300A5 /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+ext.swift"; path = "ScreenOn/Controller/ViewController/UIView+ext.swift"; sourceTree = SOURCE_ROOT; };
+		A42C0E8620EA6E5C005300A5 /* PeersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeersViewController.swift; sourceTree = "<group>"; };
+		A42C0E8820EA6ED0005300A5 /* PeerSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerSessionManager.swift; sourceTree = "<group>"; };
 		C51D284EF12DD7E6245B0036 /* Pods-ScreenOnTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnTests/Pods-ScreenOnTests.release.xcconfig"; sourceTree = "<group>"; };
 		F39F7B5D983C8FE276881110 /* Pods_ScreenOnUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScreenOnUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				725ADD5020E7A1750068E8C4 /* NetworkMonitor.swift */,
+				A42C0E8820EA6ED0005300A5 /* PeerSessionManager.swift */,
 			);
 			path = DeviceUtil;
 			sourceTree = "<group>";
@@ -296,8 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				72EFF40220E7B86800B0DD26 /* LoginViewController.swift */,
-				A42C0E8220EA67E1005300A5 /* BGViewController.swift */,
 				72EF9BB020E8A1840053CB27 /* AdmobBannerViewController.swift */,
+				A42C0E8620EA6E5C005300A5 /* PeersViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -555,16 +558,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				72EFF40320E7B86800B0DD26 /* LoginViewController.swift in Sources */,
+				A42C0E8920EA6ED0005300A5 /* PeerSessionManager.swift in Sources */,
 				72F1DBA220E7084700D74046 /* UIApplication+ext.swift in Sources */,
 				72EF9BB120E8A1840053CB27 /* AdmobBannerViewController.swift in Sources */,
 				725ADD5120E7A1750068E8C4 /* NetworkMonitor.swift in Sources */,
 				72F8021220E7048E00FF21A4 /* ViewController.swift in Sources */,
 				72F8021820E7048E00FF21A4 /* ScreenOn.xcdatamodeld in Sources */,
+				A42C0E8720EA6E5C005300A5 /* PeersViewController.swift in Sources */,
 				7252EE0820E7C0D800094982 /* NSPersistentStoreCoordinator+ext.swift in Sources */,
 				72F1DBA420E7089100D74046 /* UIViewController+ext.swift in Sources */,
 				A42C0E8520EA6A73005300A5 /* UIView+ext.swift in Sources */,
 				7252EE0320E7C04600094982 /* CoreDataManager.swift in Sources */,
-				A42C0E8320EA67E1005300A5 /* BGViewController.swift in Sources */,
 				72F8021020E7048E00FF21A4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

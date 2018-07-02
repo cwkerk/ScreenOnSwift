@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="-660" y="1406"/>
         </scene>
-        <!--View Controller-->
+        <!--Peers View Controller-->
         <scene sceneID="Mxv-IB-4ox">
             <objects>
-                <viewController id="5Gu-eF-DUD" customClass="BGViewController" customModule="ScreenOn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Gu-eF-DUD" customClass="PeersViewController" customModule="ScreenOn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GLx-MT-Shv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
