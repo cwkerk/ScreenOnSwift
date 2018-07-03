@@ -11,6 +11,8 @@ import AVFoundation
 
 class PeersViewController: UIViewController {
     
+    private let cellId = "peer"
+    
     private var peerList = [Peer]()
     private var peerSessionManager: PeerSessionManager? {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -30,7 +32,7 @@ class PeersViewController: UIViewController {
         self.infoView.layer.backgroundColor = UIColor(white: 0.95, alpha: 1.0).cgColor
         self.peersTableView.layer.cornerRadius = 3.0
         self.peersTableView.layer.backgroundColor = UIColor(white: 0.95, alpha: 1.0).cgColor
-        
+        self.peersTableView.dataSource = self
     }
 
 }
@@ -54,6 +56,9 @@ extension PeersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId, for: indexPath)
+        cell.textLabel?.text = self.peerList[indexPath.row].name
+        cell.imageView?.image = UIImage(named: self.peerList[indexPath.row].state.description)
         return UITableViewCell()
     }
     
