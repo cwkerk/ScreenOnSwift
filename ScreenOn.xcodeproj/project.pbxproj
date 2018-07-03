@@ -79,7 +79,7 @@
 		72F8024220E704D800FF21A4 /* google.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = google.plist; sourceTree = "<group>"; };
 		811FF324D7BD4F72CB820B1A /* Pods-ScreenOnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnUITests/Pods-ScreenOnUITests.release.xcconfig"; sourceTree = "<group>"; };
 		92F0567977342A510319FB10 /* Pods-ScreenOnTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnTests/Pods-ScreenOnTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A42C0E8420EA6A73005300A5 /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+ext.swift"; path = "ScreenOn/Controller/ViewController/UIView+ext.swift"; sourceTree = SOURCE_ROOT; };
+		A42C0E8420EA6A73005300A5 /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+ext.swift"; path = "ScreenOn/View/Extension/UIView+ext.swift"; sourceTree = SOURCE_ROOT; };
 		A42C0E8620EA6E5C005300A5 /* PeersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeersViewController.swift; sourceTree = "<group>"; };
 		A44BDCCF20EBB3B400CF7C23 /* CoreLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationManager.swift; sourceTree = "<group>"; };
 		A44BDCD120EBB61C00CF7C23 /* PeerSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerSessionManager.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		72F1DB9C20E707EA00D74046 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				72F1DB9E20E7080D00D74046 /* Extension */,
+				A44BDCD320EBB7A700CF7C23 /* Extension */,
 				72F1DB9D20E707FC00D74046 /* Storyboard */,
 				72EFF40120E7B5CF00B0DD26 /* Custom */,
 			);
@@ -207,14 +207,6 @@
 				72F8021B20E7048F00FF21A4 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		72F1DB9E20E7080D00D74046 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				A42C0E8420EA6A73005300A5 /* UIView+ext.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		72F1DB9F20E7082200D74046 /* Controller */ = {
@@ -306,6 +298,14 @@
 				A42C0E8620EA6E5C005300A5 /* PeersViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A44BDCD320EBB7A700CF7C23 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A42C0E8420EA6A73005300A5 /* UIView+ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
