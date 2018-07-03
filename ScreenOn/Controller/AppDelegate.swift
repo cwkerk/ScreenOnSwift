@@ -17,6 +17,7 @@ import PinterestSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var peerSessionManager: PeerSessionManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GIDSignIn.sharedInstance().clientID = "997117142453-g07648sd279ntfnbm03vbddnkj46dsoq.apps.googleusercontent.com"

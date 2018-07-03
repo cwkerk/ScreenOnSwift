@@ -71,6 +71,12 @@ class LoginViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.peerSessionManager = PeerSessionManager(serviceType: "link")
+        }
+    }
+    
 }
 
 extension LoginViewController: GIDSignInDelegate {

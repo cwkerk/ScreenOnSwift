@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 import CoreLocation
 import MultipeerConnectivity
 
 protocol PeerSessionManagerDelegate {
-    func updatePeerState(state: MCSessionState, for peer: MCPeerID, in location: CLLocation?)
+    func receiveData(_ data: Data, from peer: MCPeerID)
+    func removePeer(_ peer: MCPeerID)
+    func updatePeerState(state: MCSessionState, for peer: MCPeerID)
 }
 
 class PeerSessionManager: NSObject {
@@ -96,6 +99,7 @@ extension PeerSessionManager: MCNearbyServiceAdvertiserDelegate {
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
                 vc.present(alert, animated: true, completion: nil)
+                AudioServicesPlayAlertSound(SystemSoundID(1322))
             }
         }
     }
@@ -112,9 +116,7 @@ extension PeerSessionManager: MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         self.serviceSession.cancelConnectPeer(peerID)
-        DispatchQueue.main.async {
-            self.delegate?.updatePeerState(state: .notConnected, for: peerID, in: nil)
-        }
+        self.delegate?.removePeer(peerID)
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {}
@@ -125,7 +127,7 @@ extension PeerSessionManager: MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         DispatchQueue.main.async {
-            self.delegate?.updatePeerState(state: state, for: peerID, in: nil)
+            self.delegate?.updatePeerState(state: state, for: peerID)
             if state == .connected {
                 self.notifyMyLocation()
             }
@@ -133,14 +135,7 @@ extension PeerSessionManager: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        if let locInfo = try? JSONSerialization.jsonObject(with: data, options: [.allowFragments]) {
-            if let locArr = locInfo as? [CLLocationDegrees] {
-                let loc = CLLocation(latitude: locArr[0], longitude: locArr[1])
-                DispatchQueue.main.async {
-                    self.delegate?.updatePeerState(state: .connected, for: peerID, in: loc)
-                }
-            }
-        }
+        self.delegate?.receiveData(data, from: peerID)
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
