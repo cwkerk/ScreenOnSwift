@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import GoogleSignIn
 import FBSDKLoginKit
 import PinterestSDK
@@ -17,6 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var appLogoView: UIImageView!
     @IBOutlet weak var loginBlurView: UIVisualEffectView!
+    @IBOutlet weak var gidSigninButton: GIDSignInButton!
     @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
     @IBOutlet weak var pinterestLoginButton: UIButton!
     
@@ -25,10 +27,11 @@ class LoginViewController: UIViewController {
         self.appLogoView.layer.cornerRadius = 10.0
         self.loginBlurView.layer.cornerRadius = 20.0
         GIDSignIn.sharedInstance().uiDelegate = self
+        self.gidSigninButton.style = .wide
         self.fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
         self.fbLoginButton.layer.shadowColor = UIColor.darkGray.cgColor
         self.fbLoginButton.constraints.forEach { (c) in
-            if c.firstAttribute == .height && c.constant == 28 {
+            if c.firstAttribute == .height && c.constant != 50 {
                 self.fbLoginButton.removeConstraint(c)
             }
         }
@@ -41,21 +44,40 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if GIDSignIn.sharedInstance().hasAuthInKeychain() {
-            GIDSignIn.sharedInstance().signInSilently()
-            self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
+            let id = GIDSignIn.sharedInstance().currentUser.profile.name ?? GIDSignIn.sharedInstance().currentUser.profile.email
+            let alert = UIAlertController(title: "Google Sign In", message: "Sign in as \(id!)?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+                GIDSignIn.sharedInstance().signInSilently()
+                self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            AudioServicesPlayAlertSound(SystemSoundID(1322))
         } else if FBSDKAccessToken.currentAccessTokenIsActive() {
-            self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
-        } else {
-            PDKClient.sharedInstance().silentlyAuthenticatefromViewController(self, withSuccess: { (response) in
-                let user = response?.user()
-                print("The pinterest user is \(user?.biography ?? "from unknown background")")
-            }) { (error) in
-                if let err = error {
-                    print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
-                } else {
-                    self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
+            let alert = UIAlertController(title: "Facebook Login", message: "Login as \(FBSDKProfile.current().name!)?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+                self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            AudioServicesPlayAlertSound(SystemSoundID(1322))
+        } else if PDKClient.sharedInstance().authorized {
+            let alert = UIAlertController(title: "Facebook Login", message: "Login as \(FBSDKProfile.current().name!)?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+                PDKClient.sharedInstance().silentlyAuthenticatefromViewController(self, withSuccess: { (response) in
+                    let user = response?.user()
+                    print("The pinterest user is \(user?.biography ?? "from unknown background")")
+                }) { (error) in
+                    if let err = error {
+                        print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
+                    } else {
+                        self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
+                    }
                 }
-            }
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            AudioServicesPlayAlertSound(SystemSoundID(1322))
         }
     }
     
