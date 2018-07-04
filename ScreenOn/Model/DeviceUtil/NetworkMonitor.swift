@@ -18,18 +18,13 @@ class NetworkMonitor {
     private init() {
         self.reachability?.whenReachable = { (rch) in
             let currVC = UIApplication.getCurrentViewController()
-            guard let target = currVC?.childViewControllers.filter({ (vc) -> Bool in
-                return vc.restorationIdentifier == "NoInternetViewController"
-            }).first else { return }
-            target.willMove(toParentViewController: nil)
-            target.view.removeFromSuperview()
-            target.removeFromParentViewController()
+            currVC?.removeChild(viewControllerId: "NoInternetViewController")
         }
         self.reachability?.whenUnreachable = { _ in
-            let currVC = UIApplication.getCurrentViewController()
+            guard let currVC = UIApplication.getCurrentViewController() else { return }
             let child = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NoInternetViewController")
-            let rect = CGRect(x: 0, y: currVC?.view.layoutMargins.top ?? 0, width: currVC?.view.bounds.size.width ?? 0, height: 50)
-            currVC?.addChild(viewController: child, inRect: rect)
+            let rect = CGRect(x: 0, y: currVC.view.layoutMargins.top, width: currVC.view.bounds.size.width, height: 50)
+            currVC.addChild(viewController: child, inRect: rect)
         }
     }
     

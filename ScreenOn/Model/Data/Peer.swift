@@ -10,10 +10,18 @@ import Foundation
 import CoreLocation
 import MultipeerConnectivity
 
-class Peer {
+struct Peer {
     
     var name: String!
     var state: MCSessionState!
+    var date: Date!
     var location: CLLocation?
+    
+    init(name: String, state: MCSessionState, location: CLLocation?) {
+        self.name = name
+        self.state = state
+        self.location = location
+        self.date = Date()
+    }
     
 }

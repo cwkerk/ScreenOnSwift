@@ -12,9 +12,9 @@ import CoreLocation
 import MultipeerConnectivity
 
 protocol PeerSessionManagerDelegate {
-    func receiveData(_ data: Data, from peer: MCPeerID)
-    func removePeer(_ peer: MCPeerID)
-    func updatePeerState(state: MCSessionState, for peer: MCPeerID)
+    func peerSession(receive data: Data, from peer: MCPeerID)
+    func peerSession(remove peer: MCPeerID)
+    func peerSession(update state: MCSessionState, for peer: MCPeerID)
 }
 
 class PeerSessionManager: NSObject {
@@ -47,7 +47,7 @@ class PeerSessionManager: NSObject {
     let myPeerID = MCPeerID(displayName: UIDevice.current.name)
     
     var delegate: PeerSessionManagerDelegate?
-
+    
     init(serviceType: String) {
         super.init()
         self.serviceType = serviceType
@@ -76,6 +76,10 @@ class PeerSessionManager: NSObject {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func send(invitation context: Data?, to peer: MCPeerID) {
+        self.serviceBrowser.invitePeer(peer, to: self.serviceSession, withContext: context, timeout: 30)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -116,7 +120,7 @@ extension PeerSessionManager: MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         self.serviceSession.cancelConnectPeer(peerID)
-        self.delegate?.removePeer(peerID)
+        self.delegate?.peerSession(remove: peerID)
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {}
@@ -127,7 +131,7 @@ extension PeerSessionManager: MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         DispatchQueue.main.async {
-            self.delegate?.updatePeerState(state: state, for: peerID)
+            self.delegate?.peerSession(update: state, for: peerID)
             if state == .connected {
                 self.notifyMyLocation()
             }
@@ -135,7 +139,9 @@ extension PeerSessionManager: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        self.delegate?.receiveData(data, from: peerID)
+        DispatchQueue.main.async {
+            self.delegate?.peerSession(receive: data, from: peerID)
+        }
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {

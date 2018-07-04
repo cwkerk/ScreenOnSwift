@@ -30,6 +30,7 @@
 		A44BDCD220EBB61C00CF7C23 /* PeerSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44BDCD120EBB61C00CF7C23 /* PeerSessionManager.swift */; };
 		A44BDCD620EBE17D00CF7C23 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44BDCD520EBE17D00CF7C23 /* Peer.swift */; };
 		A44BDCD820EBE9B100CF7C23 /* MCSessionState+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44BDCD720EBE9B100CF7C23 /* MCSessionState+ext.swift */; };
+		A4FE9A6820ECE4EB00734536 /* Date+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE9A6720ECE4EB00734536 /* Date+ext.swift */; };
 		E1E3C4AF9CEE56E28B152826 /* Pods_ScreenOnTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557CC963C073F93F756AB15E /* Pods_ScreenOnTests.framework */; };
 		EF4A8A15EEADC77457BC8E3C /* Pods_ScreenOn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9AC4F798F3BAEB96B3B125 /* Pods_ScreenOn.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		A44BDCD120EBB61C00CF7C23 /* PeerSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerSessionManager.swift; sourceTree = "<group>"; };
 		A44BDCD520EBE17D00CF7C23 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		A44BDCD720EBE9B100CF7C23 /* MCSessionState+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MCSessionState+ext.swift"; sourceTree = "<group>"; };
+		A4FE9A6720ECE4EB00734536 /* Date+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ext.swift"; sourceTree = "<group>"; };
 		C51D284EF12DD7E6245B0036 /* Pods-ScreenOnTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenOnTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenOnTests/Pods-ScreenOnTests.release.xcconfig"; sourceTree = "<group>"; };
 		F39F7B5D983C8FE276881110 /* Pods_ScreenOnUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScreenOnUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 			children = (
 				7252EE0720E7C0D800094982 /* NSPersistentStoreCoordinator+ext.swift */,
 				A44BDCD720EBE9B100CF7C23 /* MCSessionState+ext.swift */,
+				A4FE9A6720ECE4EB00734536 /* Date+ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				725ADD5120E7A1750068E8C4 /* NetworkMonitor.swift in Sources */,
 				A44BDCD020EBB3B400CF7C23 /* CoreLocationManager.swift in Sources */,
 				72F8021220E7048E00FF21A4 /* ViewController.swift in Sources */,
+				A4FE9A6820ECE4EB00734536 /* Date+ext.swift in Sources */,
 				72F8021820E7048E00FF21A4 /* ScreenOn.xcdatamodeld in Sources */,
 				A42C0E8720EA6E5C005300A5 /* PeersViewController.swift in Sources */,
 				A44BDCD620EBE17D00CF7C23 /* Peer.swift in Sources */,
