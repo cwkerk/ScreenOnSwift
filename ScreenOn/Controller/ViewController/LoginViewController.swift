@@ -29,7 +29,11 @@ class LoginViewController: UIViewController {
         GIDSignIn.sharedInstance().uiDelegate = self
         self.gidSigninButton.style = .wide
         self.fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        self.fbLoginButton.backgroundColor = UIColor.clear
         self.fbLoginButton.layer.shadowColor = UIColor.darkGray.cgColor
+        self.fbLoginButton.layer.shadowRadius = 1.0
+        self.fbLoginButton.layer.shadowOpacity = 1.0
+        self.fbLoginButton.layer.shadowOffset = CGSize(width: 0.5, height: 1.5)
         self.fbLoginButton.constraints.forEach { (c) in
             if c.firstAttribute == .height && c.constant != 50 {
                 self.fbLoginButton.removeConstraint(c)
@@ -39,6 +43,13 @@ class LoginViewController: UIViewController {
         self.fbLoginButton.readPermissions = ["email", "public_profile"]
         self.pinterestLoginButton.contentHorizontalAlignment = .left
         self.pinterestLoginButton.layer.cornerRadius = 3.0
+        self.pinterestLoginButton.layer.shadowColor = UIColor.darkGray.cgColor
+        self.pinterestLoginButton.layer.shadowRadius = 1.0
+        self.pinterestLoginButton.layer.shadowOpacity = 1.0
+        self.pinterestLoginButton.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
+        if PDKClient.sharedInstance().authorized {
+            self.pinterestLoginButton.setTitle("Log out", for: .normal)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,19 +59,27 @@ class LoginViewController: UIViewController {
             let alert = UIAlertController(title: "Google Sign In", message: "Sign in as \(id!)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
                 GIDSignIn.sharedInstance().signInSilently()
-                self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
+                self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: nil)
             }))
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
             AudioServicesPlayAlertSound(SystemSoundID(1322))
         } else if FBSDKAccessToken.currentAccessTokenIsActive() {
-            let alert = UIAlertController(title: "Facebook Login", message: "Login as \(FBSDKProfile.current().name!)?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-                self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
-            }))
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            AudioServicesPlayAlertSound(SystemSoundID(1322))
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "name, email"]).start { (conn, res, err) in
+                if let response = res as? [String: Any], err == nil {
+                    let name = response["name"] as? String
+                    let email = response["email"] as? String
+                    let alert = UIAlertController(title: "Facebook Login", message: "Login as \(name ?? (email ?? "***"))?", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+                        self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: nil)
+                    }))
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    AudioServicesPlayAlertSound(SystemSoundID(1322))
+                } else {
+                    print("Facebook graph requeste error: \(err?.localizedDescription ?? "")")
+                }
+            }
         } else if PDKClient.sharedInstance().authorized {
             let alert = UIAlertController(title: "Facebook Login", message: "Login as \(FBSDKProfile.current().name!)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
@@ -71,13 +90,14 @@ class LoginViewController: UIViewController {
                     if let err = error {
                         print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
                     } else {
-                        self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: self)
+                        self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: nil)
                     }
                 }
             }))
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
             AudioServicesPlayAlertSound(SystemSoundID(1322))
+        } else {
         }
     }
     
@@ -119,7 +139,6 @@ extension LoginViewController: GIDSignInUIDelegate {
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
-        
     }
     
 }

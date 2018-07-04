@@ -38,13 +38,6 @@
                                                 <constraint firstAttribute="height" constant="50" id="rt2-Fh-rBv"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F19-Hp-Ugq" customClass="FBSDKLoginButton">
-                                            <rect key="frame" x="28" y="469.66666666666663" width="319" height="50"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="2VG-Ea-N92"/>
-                                            </constraints>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-0x-QN1">
                                             <rect key="frame" x="30" y="539.66666666666663" width="317" height="50"/>
                                             <color key="backgroundColor" red="1" green="0.14901960784313725" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,26 +46,33 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                            <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="titleEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <state key="normal" title="Continue with Pinterest" image="Pinterest"/>
                                             <connections>
                                                 <action selector="pinterestLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P33-b1-CTv"/>
                                             </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9A-UF-big" customClass="FBSDKLoginButton">
+                                            <rect key="frame" x="28" y="469.66666666666663" width="319" height="50"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="OzQ-vN-YVJ"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="F19-Hp-Ugq" firstAttribute="top" secondItem="2oP-nS-Lyu" secondAttribute="bottom" constant="20" id="0rE-et-IzB"/>
-                                        <constraint firstItem="F19-Hp-Ugq" firstAttribute="leading" secondItem="2oP-nS-Lyu" secondAttribute="leading" constant="3" id="21T-Jt-ITz"/>
+                                        <constraint firstItem="o9A-UF-big" firstAttribute="top" secondItem="2oP-nS-Lyu" secondAttribute="bottom" constant="20" id="2MV-4Z-WbQ"/>
                                         <constraint firstAttribute="trailing" secondItem="6eW-9v-lcf" secondAttribute="trailing" constant="85" id="3D8-GE-woL"/>
-                                        <constraint firstItem="F19-Hp-Ugq" firstAttribute="trailing" secondItem="2oP-nS-Lyu" secondAttribute="trailing" constant="-3" id="BU7-J3-TKy"/>
+                                        <constraint firstAttribute="trailing" secondItem="o9A-UF-big" secondAttribute="trailing" constant="28" id="4gf-4Q-ZUQ"/>
                                         <constraint firstItem="2oP-nS-Lyu" firstAttribute="top" secondItem="6eW-9v-lcf" secondAttribute="bottom" constant="50" id="DIR-WL-8DD"/>
                                         <constraint firstItem="6eW-9v-lcf" firstAttribute="centerY" secondItem="T94-Sk-UPv" secondAttribute="centerY" constant="-120" id="GUW-2T-6FR"/>
+                                        <constraint firstItem="o9A-UF-big" firstAttribute="leading" secondItem="T94-Sk-UPv" secondAttribute="leading" constant="28" id="Pvn-lF-qKO"/>
                                         <constraint firstItem="1Yo-0x-QN1" firstAttribute="leading" secondItem="2oP-nS-Lyu" secondAttribute="leading" constant="5" id="SuB-2f-pI9"/>
                                         <constraint firstAttribute="trailing" secondItem="2oP-nS-Lyu" secondAttribute="trailing" constant="25" id="XVR-et-qS1"/>
+                                        <constraint firstItem="1Yo-0x-QN1" firstAttribute="top" secondItem="o9A-UF-big" secondAttribute="bottom" constant="20" id="XdY-4m-DoI"/>
                                         <constraint firstItem="1Yo-0x-QN1" firstAttribute="trailing" secondItem="2oP-nS-Lyu" secondAttribute="trailing" constant="-3" id="aKb-ih-nvR"/>
                                         <constraint firstItem="6eW-9v-lcf" firstAttribute="leading" secondItem="T94-Sk-UPv" secondAttribute="leading" constant="85" id="gsd-8U-eVm"/>
                                         <constraint firstItem="2oP-nS-Lyu" firstAttribute="leading" secondItem="T94-Sk-UPv" secondAttribute="leading" constant="25" id="s1u-zD-05C"/>
-                                        <constraint firstItem="1Yo-0x-QN1" firstAttribute="top" secondItem="F19-Hp-Ugq" secondAttribute="bottom" constant="20" id="tPF-UP-aUW"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -89,7 +89,7 @@
                     </view>
                     <connections>
                         <outlet property="appLogoView" destination="6eW-9v-lcf" id="5y9-hl-NAm"/>
-                        <outlet property="fbLoginButton" destination="F19-Hp-Ugq" id="oJp-Hg-QuX"/>
+                        <outlet property="fbLoginButton" destination="o9A-UF-big" id="yZc-xN-ssP"/>
                         <outlet property="gidSigninButton" destination="2oP-nS-Lyu" id="i9T-1X-5Af"/>
                         <outlet property="loginBlurView" destination="yNj-8w-rR7" id="Qcq-KX-r68"/>
                         <outlet property="pinterestLoginButton" destination="1Yo-0x-QN1" id="mgD-Ea-LmF"/>
