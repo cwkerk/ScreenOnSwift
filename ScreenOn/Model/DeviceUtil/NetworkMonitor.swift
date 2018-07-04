@@ -23,7 +23,7 @@ class NetworkMonitor {
         self.reachability?.whenUnreachable = { _ in
             guard let currVC = UIApplication.getCurrentViewController() else { return }
             let child = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NoInternetViewController")
-            let rect = CGRect(x: 0, y: currVC.view.layoutMargins.top, width: currVC.view.bounds.size.width, height: 50)
+            let rect = CGRect(x: 0, y: currVC.view.layoutMargins.top, width: currVC.view.bounds.size.width, height: 30)
             currVC.addChild(viewController: child, inRect: rect)
         }
     }
