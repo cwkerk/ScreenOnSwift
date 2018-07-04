@@ -15,6 +15,7 @@ import PinterestSDK
 class LoginViewController: UIViewController {
     
     private let nextDestinationSegueID = "startApp"
+    private let pinterestKey = "pinterest"
     
     @IBOutlet weak var appLogoView: UIImageView!
     @IBOutlet weak var loginBlurView: UIVisualEffectView!
@@ -47,15 +48,15 @@ class LoginViewController: UIViewController {
         self.pinterestLoginButton.layer.shadowRadius = 1.0
         self.pinterestLoginButton.layer.shadowOpacity = 1.0
         self.pinterestLoginButton.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
-        if PDKClient.sharedInstance().authorized {
-            self.pinterestLoginButton.setTitle("Log out", for: .normal)
-        }
+        self.updatePinterestButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.updatePinterestButton()
         if GIDSignIn.sharedInstance().hasAuthInKeychain() {
-            let id = GIDSignIn.sharedInstance().currentUser.profile.name ?? GIDSignIn.sharedInstance().currentUser.profile.email
+            guard let user = GIDSignIn.sharedInstance().currentUser else { return }
+            let id = user.profile.name ?? user.profile.email
             let alert = UIAlertController(title: "Google Sign In", message: "Sign in as \(id!)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
                 GIDSignIn.sharedInstance().signInSilently()
@@ -80,12 +81,13 @@ class LoginViewController: UIViewController {
                     print("Facebook graph requeste error: \(err?.localizedDescription ?? "")")
                 }
             }
-        } else if PDKClient.sharedInstance().authorized {
-            let alert = UIAlertController(title: "Facebook Login", message: "Login as \(FBSDKProfile.current().name!)?", preferredStyle: .alert)
+        } else if let usernameData = KeychainManager.shared.retrieveKeyChain(forService: self.pinterestKey) {
+            let username = String(data: usernameData, encoding: .utf8) ?? "*****"
+            let alert = UIAlertController(title: "Pinterest Login", message: "Login as \(username)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
                 PDKClient.sharedInstance().silentlyAuthenticatefromViewController(self, withSuccess: { (response) in
                     let user = response?.user()
-                    print("The pinterest user is \(user?.biography ?? "from unknown background")")
+                    print("The pinterest user is \(user?.firstName ?? "") \(user?.lastName ?? "")")
                 }) { (error) in
                     if let err = error {
                         print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
@@ -97,19 +99,30 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
             AudioServicesPlayAlertSound(SystemSoundID(1322))
-        } else {
         }
     }
     
     @IBAction func pinterestLogin(_ sender: UIButton) {
-        let permissions = [PDKClientReadPublicPermissions, PDKClientWritePublicPermissions, PDKClientReadRelationshipsPermissions, PDKClientWriteRelationshipsPermissions]
-        PDKClient.sharedInstance().authenticate(withPermissions: permissions, from: self, withSuccess: { (response) in
-            let user = response?.user()
-            print("The pinterest user is \(user?.biography ?? "from unknown background")")
-        }) { (error) in
-            if let err = error {
-                print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
+        if KeychainManager.shared.retrieveKeyChain(forService: self.pinterestKey) == nil {
+            let permissions = [PDKClientReadPublicPermissions, PDKClientWritePublicPermissions, PDKClientReadRelationshipsPermissions, PDKClientWriteRelationshipsPermissions]
+            PDKClient.sharedInstance().authenticate(withPermissions: permissions, from: self, withSuccess: { (response) in
+                guard let user = response?.user(),
+                    let usernameData = "\(user.firstName) \(user.lastName)".data(using: .utf8)
+                    else { return }
+                print("The pinterest user is \(user.firstName ?? "") \(user.lastName ?? "")")
+                KeychainManager.shared.createKeyChain(forService: self.pinterestKey, forData: usernameData)
+            }) { (error) in
+                if let err = error {
+                    let alert = UIAlertController(title: "Pinterest login failed", message: "Please try other login approaches", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    AudioServicesPlayAlertSound(SystemSoundID(1322))
+                    print("Failed to get authentication from Pinterest due to: \(err.localizedDescription)")
+                }
             }
+        } else {
+            PDKClient.clearAuthorizedUser()
+            KeychainManager.shared.deleteKeyChain(forService: self.pinterestKey)
         }
     }
     
@@ -119,12 +132,24 @@ class LoginViewController: UIViewController {
         }
     }
     
+    private func updatePinterestButton() {
+        if KeychainManager.shared.retrieveKeyChain(forService: self.pinterestKey) == nil {
+            self.pinterestLoginButton.setTitle("Continue with Pinterest", for: .normal)
+        } else {
+            self.pinterestLoginButton.setTitle("Log out", for: .normal)
+        }
+    }
+    
 }
 
 extension LoginViewController: GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        // TODO: get user profile here
+        if let err = error {
+            
+        } else {
+            self.performSegue(withIdentifier: self.nextDestinationSegueID, sender: nil)
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
